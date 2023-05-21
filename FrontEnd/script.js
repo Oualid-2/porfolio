@@ -47,3 +47,22 @@ async function login() {
         }
     }
 }
+
+
+
+
+fetch('http://localhost:5678/api/works')
+  .then(response => response.json())
+  .then(data => {
+    const galerie = document.getElementById('galerie');
+    galerie.innerHTML = '';
+
+    data.forEach(projet => {
+      const projetElement = document.createElement('div');
+      projetElement.textContent = projet.titre;
+      galerie.appendChild(projetElement);
+    });
+  })
+  .catch(error => {
+    console.error('Erreur lors de la récupération des projets :', error);
+  });
