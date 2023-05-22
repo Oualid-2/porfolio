@@ -151,6 +151,14 @@ const images = [
       // Ajouter le conteneur à la galerie
       gallery.appendChild(imageContainer);
     });
+     // Ajouter les classes de filtre en fonction de la catégorie de l'image
+     if (image.category.name === 'Objets') {
+        imageContainer.classList.add('filter-objects');
+      } else if (image.category.name === 'Appartements') {
+        imageContainer.classList.add('filter-apartments');
+      } else if (image.category.name === 'Hotels & restaurants') {
+        imageContainer.classList.add('filter-hotels');
+      }
   }
   
   // Appeler la fonction pour charger les images au chargement de la page
