@@ -129,13 +129,27 @@ const images = [
   
     // Parcourir le tableau d'images
     images.forEach((image) => {
-      // Créer un élément <img> pour chaque image
+      // Créer un conteneur <div> pour chaque image
+      const imageContainer = document.createElement('div');
+      imageContainer.className = 'image-container';
+      imageContainer.style.marginTop = ''; // Ajout de la marge inférieure de 7px
+
+  
+      // Créer un élément <img> pour l'image
       const imgElement = document.createElement('img');
       imgElement.src = image.imageUrl;
       imgElement.alt = image.title;
   
-      // Ajouter l'image à la galerie
-      gallery.appendChild(imgElement);
+      // Créer un élément <p> pour le titre de l'image
+      const titleElement = document.createElement('p');
+      titleElement.textContent = image.title;
+  
+      // Ajouter l'image et le titre au conteneur
+      imageContainer.appendChild(imgElement);
+      imageContainer.appendChild(titleElement);
+  
+      // Ajouter le conteneur à la galerie
+      gallery.appendChild(imageContainer);
     });
   }
   
