@@ -123,47 +123,54 @@ const images = [
     }
   ];
   
-  // Fonction pour charger les images dans la section du portfolio
-  function loadImages() {
+// Fonction pour charger les images dans la section du portfolio
+function loadImages() {
     const gallery = document.getElementById('gallery');
   
-    // Parcourir le tableau d'images
-    images.forEach((image) => {
-      // Créer un conteneur <div> pour chaque image
-      const imageContainer = document.createElement('div');
-      imageContainer.className = 'image-container';
-      imageContainer.style.marginTop = ''; // Ajout de la marge inférieure de 7px
-
+    fetch('http://localhost:5678/api/works')
+      .then(response => response.json())
+      .then(images => {
+        images.forEach((image) => {
+          // Créer un conteneur <div> pour chaque image
+          const imageContainer = document.createElement('div');
+          imageContainer.className = 'image-container';
+          imageContainer.style.marginTop = '7px'; // Ajout de la marge inférieure de 7px
   
-      // Créer un élément <img> pour l'image
-      const imgElement = document.createElement('img');
-      imgElement.src = image.imageUrl;
-      imgElement.alt = image.title;
+          // Créer un élément <img> pour l'image
+          const imgElement = document.createElement('img');
+          imgElement.src = image.imageUrl;
+          imgElement.alt = image.title;
   
-      // Créer un élément <p> pour le titre de l'image
-      const titleElement = document.createElement('p');
-      titleElement.textContent = image.title;
+          // Créer un élément <p> pour le titre de l'image
+          const titleElement = document.createElement('p');
+          titleElement.textContent = image.title;
   
-      // Ajouter l'image et le titre au conteneur
-      imageContainer.appendChild(imgElement);
-      imageContainer.appendChild(titleElement);
+          // Ajouter l'image et le titre au conteneur
+          imageContainer.appendChild(imgElement);
+          imageContainer.appendChild(titleElement);
   
-      // Ajouter le conteneur à la galerie
-      gallery.appendChild(imageContainer);
-    });
-     // Ajouter les classes de filtre en fonction de la catégorie de l'image
-     if (image.category.name === 'Objets') {
-        imageContainer.classList.add('filter-objects');
-      } else if (image.category.name === 'Appartements') {
-        imageContainer.classList.add('filter-apartments');
-      } else if (image.category.name === 'Hotels & restaurants') {
-        imageContainer.classList.add('filter-hotels');
-      }
+          // Ajouter le conteneur à la galerie
+          gallery.appendChild(imageContainer);
+  
+          // Ajouter les classes de filtre en fonction de la catégorie de l'image
+          if (image.category.name === 'Objets') {
+            imageContainer.classList.add('filter-objects');
+          } else if (image.category.name === 'Appartements') {
+            imageContainer.classList.add('filter-apartments');
+          } else if (image.category.name === 'Hotels & restaurants') {
+            imageContainer.classList.add('filter-hotels');
+          }
+        });
+      })
+      .catch(error => {
+        console.log("Une erreur s'est produite lors du chargement des images :", error);
+        alert("Une erreur s'est produite lors du chargement des images. Veuillez réessayer plus tard.");
+      });
   }
   
   // Appeler la fonction pour charger les images au chargement de la page
   window.addEventListener('load', loadImages);
-  
+
   // Écouteur d'événement pour la soumission du formulaire de connexion
   document.getElementById("form").addEventListener("submit", function (event) {
     event.preventDefault(); // Empêche le rechargement de la page lors de la soumission du formulaire

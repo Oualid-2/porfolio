@@ -243,21 +243,8 @@ footer nav ul {
 	  margin-bottom: 40px;
 	  margin-top: 30px;
   }
-  /* Style de filtre pour la catégorie "Objets" */
-.filter-objects {
-	border: 1px solid #ccc;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  .filter-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
   }
-  
-  /* Style de filtre pour la catégorie "Appartements" */
-  .filter-apartments {
-	border: 1px solid #ff9800;
-	box-shadow: 0 2px 4px rgba(255, 152, 0, 0.3);
-  }
-  
-  /* Style de filtre pour la catégorie "Hotels & restaurants" */
-  .filter-hotels {
-	border: 1px solid #e91e63;
-	box-shadow: 0 2px 4px rgba(233, 30, 99, 0.3);
-  }
-  
