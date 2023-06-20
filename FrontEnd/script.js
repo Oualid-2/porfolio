@@ -36,6 +36,15 @@ function loadImages() {
             imageContainer.classList.add('filter-hotels');
           }
         });
+  
+        // Ajouter les écouteurs d'événements aux boutons de filtre
+        const filterButtons = document.querySelectorAll('.filter-button');
+        filterButtons.forEach(button => {
+          button.addEventListener('click', function() {
+            const category = button.dataset.category;
+            filterImages(category);
+          });
+        });
       })
       .catch(error => {
         console.log("Une erreur s'est produite lors du chargement des images :", error);
@@ -45,8 +54,36 @@ function loadImages() {
   
   // Appeler la fonction pour charger les images au chargement de la page
   window.addEventListener('load', loadImages);
+  
+  // La soumission du formulaire de connexion
+  document.getElementById("form").addEventListener("submit", function(event) {
+    event.preventDefault(); // Empêche le rechargement de la page lors de la soumission du formulaire
+    login();
+  });
+  
+  // Fonction de connexion
+  async function login() {
+    // ...
+  }
+  
+  // Fonction de filtrage des images
+  function filterImages(category) {
+    const imageContainers = document.querySelectorAll('.image-container');
+    imageContainers.forEach(container => {
+      container.style.display = 'none'; // Masquer toutes les images
+  
+      if (category === 'all') {
+        container.style.display = 'block'; // Afficher toutes les images pour le bouton "Tout"
+      } else if (container.classList.contains(`filter-${category}`)) {
+        container.style.display = 'block'; // Afficher les images correspondant à la catégorie du bouton cliqué
+      }
+    });
+  }
+  
+  // Appeler la fonction pour charger les images au chargement de la page
+  window.addEventListener('load', loadImages);
 
-  // Écouteur d'événement pour la soumission du formulaire de connexion
+  // La soumission du formulaire de connexion
   document.getElementById("form").addEventListener("submit", function (event) {
     event.preventDefault(); // Empêche le rechargement de la page lors de la soumission du formulaire
     login();
