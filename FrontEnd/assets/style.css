@@ -246,5 +246,78 @@ footer nav ul {
   #filters{
 	display: flex;
     justify-content: center;
+	margin-bottom: 7%;
 
   }
+  /* Bouttons */
+.BouttonsTout{
+box-sizing: border-box;
+
+position: absolute;
+width: 100px;
+height: 37px;
+left: 35%;
+
+background: #1D6154;
+border: 1px solid #1D6154;
+border-radius: 60px;
+}
+
+.BouttonsObjets{
+box-sizing: border-box;
+
+position: absolute;
+width: 100px;
+height: 37px;
+left: 41%;
+
+
+border: 1.5px solid #1D6154;
+background-color: white;
+border-radius: 60px
+}
+.BouttonsApartments{
+box-sizing: border-box;
+
+position: absolute;
+width: 157px;
+height: 37px;
+left: 47%;
+
+border: 1.5px solid #1D6154;
+background-color: white;
+border-radius: 78px;
+}
+
+.BouttonsHotel{
+box-sizing: border-box;
+
+position: absolute;
+width: 198px;
+height: 37px;
+left: 56.2%;
+
+border: 1.5px solid #1D6154;
+background-color: white;
+border-radius: 60px;
+}
+.BouttonsEcriture{
+font-family: 'Syne';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 19px;
+text-align: center;
+color: #1D6154;
+}
+.BouttonsEcritureTout{
+font-family: 'Syne';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 19px;
+text-align: center;
+
+color: white;
+
+}
