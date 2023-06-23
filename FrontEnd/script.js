@@ -53,41 +53,21 @@ function loadImages() {
   }
   
   // Appeler la fonction pour charger les images au chargement de la page
-  window.addEventListener('load', loadImages);
-  
-  // La soumission du formulaire de connexion
-  document.getElementById("form").addEventListener("submit", function(event) {
-    event.preventDefault(); // Empêche le rechargement de la page lors de la soumission du formulaire
-    login();
+  window.addEventListener('load', function() {
+    // Vérifier si l'URL de la page est index.html
+    if (window.location.pathname.includes('index.html')) {
+      // Appeler la fonction pour charger les images uniquement sur la page index.html
+      loadImages();
+    }
   });
   
-  // Fonction de connexion
-  async function login() {
-    // ...
-  }
-  
-  // Fonction de filtrage des images
-  function filterImages(category) {
-    const imageContainers = document.querySelectorAll('.image-container');
-    imageContainers.forEach(container => {
-      container.style.display = 'none'; // Masquer toutes les images
-  
-      if (category === 'all') {
-        container.style.display = 'block'; // Afficher toutes les images pour le bouton "Tout"
-      } else if (container.classList.contains(`filter-${category}`)) {
-        container.style.display = 'block'; // Afficher les images correspondant à la catégorie du bouton cliqué
-      }
+// La soumission du formulaire de connexion
+if (window.location.pathname.includes('login.html')) {
+    document.getElementById("form").addEventListener("submit", function(event) {
+      event.preventDefault(); // Empêche le rechargement de la page lors de la soumission du formulaire
+      login();
     });
   }
-  
-  // Appeler la fonction pour charger les images au chargement de la page
-  window.addEventListener('load', loadImages);
-
-  // La soumission du formulaire de connexion
-  document.getElementById("form").addEventListener("submit", function (event) {
-    event.preventDefault(); // Empêche le rechargement de la page lors de la soumission du formulaire
-    login();
-  });
   
   // Fonction de connexion
   async function login() {
@@ -132,5 +112,19 @@ function loadImages() {
         alert("Une erreur s'est produite lors de la connexion. Veuillez réessayer plus tard.");
       }
     }
+  }
+  
+  // Fonction de filtrage des images
+  function filterImages(category) {
+    const imageContainers = document.querySelectorAll('.image-container');
+    imageContainers.forEach(container => {
+      container.style.display = 'none'; // Masquer toutes les images
+  
+      if (category === 'all') {
+        container.style.display = 'block'; // Afficher toutes les images pour le bouton "Tout"
+      } else if (container.classList.contains(`filter-${category}`)) {
+        container.style.display = 'block'; // Afficher les images correspondant à la catégorie du bouton cliqué
+      }
+    });
   }
   
